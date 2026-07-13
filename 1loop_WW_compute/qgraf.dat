@@ -1,0 +1,28 @@
+%%%%% Feynman diagrams at one loop
+%%%%% You have to produce both qqVV.1loop (form)
+%%%%% and qqVV.yaml (reduze)
+
+ config= info ;
+%% messages= 'msg.txt' ;
+%% for form 
+%% output= 'ggVV.1loop' ;
+%% style= '../Styles/form.sty.mine' ;
+%% model= '../Models/weak_qcd_form_WW';
+%% in= gluon[p1], gluon[p2], Vboson1[p3], Vboson2[p4] ;
+
+%%%%%%%%
+%%% for reduze
+
+output= 'ggVV.1loop.yaml' ;
+style= '../Styles/reduze.sty' ;
+model= '../Models/weak_qcd_reduze_WW';
+in= gluon[p1], gluon[p2], Vboson1[p3], Vboson2[p4] ;
+
+ out= ;
+
+ loops= 1 ;
+
+ loop_momentum= k;
+
+ options= onshell, notadpole, nosnail;
+

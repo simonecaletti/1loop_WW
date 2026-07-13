@@ -1,0 +1,49 @@
+*
+* QCD model description for QGRAF for a light and heavy quark
+*
+*********************************************************************
+*
+*
+* Propagators:
+* - The particle flow in the diagram follows the momentum direction
+*   of the particle 'part1' in the definition of the propagator
+*   [part1, part2, -]
+* - The mass parameter must be set to a number or
+*   a symbol declared in the file "global.yaml"
+
+[Quark1, Qbar1, - ; mass='0']
+[Quark2, Qbar2, - ; mass='mt']
+
+* AG: third quark is a massless one 
+* that can be only internal and it can couple to the top field
+
+[Quark3, Qbar3, - ; mass='0']
+[gluon,  gluon, + ; mass='0']
+[ghost,  Ghost, - ; mass='0']
+*[Photon, Photon,+, external; mass='0']
+*[Vboson, Vboson,+, external; mass='m3']
+[Vboson1, Vboson1,+, external; mass='m3']
+[Vboson2, Vboson2,+, external; mass='m4']
+
+* Vertices:
+* - The ordering of the fields
+*
+
+*[Qbar1,Photon,Quark1]
+[Qbar1,gluon,Quark1]
+*[Qbar2,Photon,Quark2]
+[Qbar2,gluon,Quark2]
+*[Qbar3,gluon,Quark3]
+[gluon,gluon,gluon]
+[Ghost,gluon,ghost]
+[gluon,gluon,gluon,gluon]
+*[Qbar1, Vboson1, Quark1]
+*[Qbar1, Vboson2, Quark1]
+*[Qbar1, Vboson, Quark1]
+*[Qbar2, Vboson, Quark2]
+*[Qbar3, Vboson, Quark3]
+
+* flavour changing
+
+[Qbar2, Vboson1, Quark1]
+[Qbar1, Vboson2, Quark2]

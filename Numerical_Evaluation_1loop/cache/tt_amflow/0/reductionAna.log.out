@@ -1,0 +1,30 @@
+
+Get::noopen: Cannot open LiteIBP.m.
+
+Get::noopen: Cannot open LiteMomentum`.
+
+Needs::nocont: Context LiteMomentum` was not created when Needs was evaluated.
+
+Get::noopen: Cannot open LiteRed`.
+
+General::stop: Further output of Get::noopen will be suppressed during this calculation.
+
+Needs::nocont: Context LiteRed` was not created when Needs was evaluated.
+
+Needs::nocont: Context Vectors` was not created when Needs was evaluated.
+
+General::stop: Further output of Needs::nocont will be suppressed during this calculation.
+
+Join::heads: Heads LIBPGetAllInts and List at positions 1 and 2 are expected to be the same.
+
+ReplaceAll::reps: {FFSparseSolverLearn[graph, Join[LIBPGetAllInts[{ibps/ints_tt_exints.mx}], {}]]} is neither a list of replacement rules nor a valid dispatch table, and so cannot be used for replacing.
+
+Set::shape: Lists {nonmis, mis} and {DepVars, IndepVars} /. FFSparseSolverLearn[graph, Join[LIBPGetAllInts[{ibps/ints_tt_exints.mx}], {}]] are not the same shape.
+"number of master integrals" -> 0
+"number of independent eqs." -> FFSolverNIndepEqs[graph, ibps]
+
+Partition::ilsmp: Single or list of positive machine-sized integers expected at position 2 of Partition[FFReconstructFunction[graph, {eps}, MaxPrimes -> 200, MaxDegree -> 1000], 0].
+
+IdentityMatrix::dims: Dimension specification 0 should be a positive machine integer or a pair of positive machine integers.
+
+Join::heads: Heads Partition and IdentityMatrix at positions 1 and 2 are expected to be the same.

@@ -1,0 +1,8 @@
+id select props Label(PL00M)*( Dk1^n1?*Dk1m1^n2?*Dk1m12^n3?*Dmk1m123^n4?)      = Label(PL00M)*(D1^n1*D2^n2*D3^n3*D4^n4)    ;
+id select props Label(PL00Mx12)*( Dk1^n1?*Dk1m2^n2?*Dk1m12^n3?*Dmk1m123^n4?)    = Label(PL00Mx12)*(D1^n1*D2^n2*D3^n3*D4^n4) ;
+
+id select props Label(PL0M0)*( Dmk1^n1?*Dmk1m1^n2?*Dmk1m12^n3?*Dk1m123^n4?)    = Label(PL0M0)*(D1^n1*D2^n2*D3^n3*D4^n4)    ;
+id select props Label(PL0M0x12)*( Dmk1^n1?*Dmk1m2^n2?*Dmk1m12^n3?*Dk1m123^n4?) = Label(PL0M0x12)*(D1^n1*D2^n2*D3^n3*D4^n4) ;
+
+id select props Label(NPL0M)*(Dk1^n1?*Dk1m1^n2?*Dmk1m13^n3?*Dmk1m123^n4?)      = Label(NPL0M)*(D1^n1*D2^n2*D3^n3*D4^n4)    ;
+id select props Label(NPL0Mx12)*(Dk1^n1?*Dk1m2^n2?*Dmk1m23^n3?*Dmk1m123^n4?)    = Label(NPL0Mx12)*(D1^n1*D2^n2*D3^n3*D4^n4) ;

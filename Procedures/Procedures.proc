@@ -1,0 +1,229 @@
+#Procedure allsimplnosort
+id p1.p1 = 0                                       ;
+id p2.p2 = 0                                       ;
+*id p3.p3 = mw2                                    ;
+id p3.p3 = m32                                     ;
+id p1.p2 = s/2                                     ;
+id p1.p3 = (-s-u+m42)/2                            ;
+id p2.p3 = (u-m32)/2                               ;
+id p1.va = 0                                       ;
+id p2.va = 0                                       ;
+id p3.va = 0                                       ;
+id p4.va =0                                        ;
+*id va.va = (d-3)/4*(s*(-s-u+mw2)*(u-mw2)-s*s*mw2) ;
+id va.va = (d-3)/4*(s*(-s-u+m42)*(u-mw2)-s*s*m42)  ;
+#EndProcedure
+
+
+#Procedure kinematics
+id p4 = -p1-p2-p3  ;
+.sort
+id p1.p1 = 0                                       ;
+id p2.p2 = 0                                       ;
+*id p3.p3 = mw2                                    ;
+id p3.p3 = m32                                     ;
+id p1.p2 = s/2                                     ;
+id p1.p3 = (-s-u+m42)/2                            ;
+id p2.p3 = (u-m32)/2                               ;
+id p1.va = 0                                       ;
+id p2.va = 0                                       ;
+id p3.va = 0                                       ;
+id p4.va = 0                                       ;
+*id va.va = (d-3)/4*(s*(-s-u+mw2)*(u-mw2)-s*s*mw2) ;
+id va.va = (d-3)/4*(s*(-s-u+m42)*(u-m32)-s*s*m32)  ;
+.sort
+#endProcedure
+
+#Procedure FactArgDen
+factarg Den ;
+.sort
+repeat id Den(n1?,n2?,?x) = Den(n1)*Den(n2,?x) ;
+.sort
+repeat id Den(n1?number_) = 1/n1 ;
+repeat id Den(n1?symbol_) = 1/n1 ;
+repeat id Den(1/n1?symbol_) = n1 ;
+.sort
+#EndProcedure
+
+#Procedure FactArgNum
+factarg Num ;
+.sort
+repeat id Num(n1?,n2?,?x) = Num(n1)*Num(n2,?x) ;
+.sort
+repeat id Num(n1?number_) = n1 ;
+repeat id Num(n1?symbol_) = n1 ;
+repeat id Num(1/n1?symbol_) = 1/n1 ;
+.sort
+#EndProcedure
+
+#Procedure transversality
+id eps1.p1 = 0 ;
+id eps1.p2 = 0 ;
+id eps1c.p1 = 0 ;
+id eps1c.p2 = 0 ;
+id eps2.p1 = 0 ;
+id eps2.p2 = 0 ;
+id eps2c.p1 = 0 ;
+id eps2c.p2 = 0 ;
+id eps3.p3 = 0 ;
+id eps4.p3 = - eps4.p1 - eps4.p2 ;
+id eps3c.p3 = 0 ;
+id eps4c.p3 = - eps4c.p1 - eps4c.p2 ;
+.sort
+#endProcedure
+
+#Procedure gaugechoice
+id eps1.p1  = 0 ;
+id eps1.p2  = 0 ;
+id eps2.p1  = 0 ;
+id eps2.p2  = 0 ;
+id eps1c.p1  = 0 ;
+id eps1c.p2  = 0 ;
+id eps2c.p1  = 0 ;
+id eps2c.p2  = 0 ;
+id eps3.p3  = 0 ;
+id eps4.p3  = -eps4.p1 -eps4.p2 ;
+id eps3c.p3 = 0 ;
+id eps4c.p3 = -eps4c.p1 -eps4c.p2 ;
+.sort
+#EndProcedure
+
+*******************************************************
+#Procedure fiertz
+
+*#message Fierz-rearrangement of color matrices
+
+id T(a1?,j1?,j1?) = 0 ;
+.sort
+
+b f,T ;
+.sort
+keep brackets ;
+id T(a1?,j1?,j2?)*T(a1?,j3?,j4?) = 1/2*(d_(j1,j4)*d_(j3,j2) - 1/Nc * d_(j1,j2)*d_(j3,j4));
+id T(a1?,j1?,j2?)*T(a2?,j2?,j1?)*f(a1?,a2?,a3?) = 0 ;
+id T(a1?,j1?,j1?) = 0 ;
+.sort
+
+#EndProcedure
+*********************************************************
+
+
+************************************************************************************************
+#Procedure coloralgebra
+
+#call fiertz
+
+*#message automated f-algebra rewriting
+#$cc = -2 ;
+.sort
+#do i=1,1
+
+#$cc = $cc+3 ;
+.sort
+b f, T ;
+.sort
+keep brackets ;
+id once f(a1?,a2?,a3?) = -2*i_*(   T(a1,J'$cc',J{'$cc'+1})*T(a2,J{'$cc'+1},J{'$cc'+2})*T(a3,J{'$cc'+2},J'$cc')
+                                 - T(a1,J'$cc',J{'$cc'+1})*T(a3,J{'$cc'+1},J{'$cc'+2})*T(a2,J{'$cc'+2},J'$cc') );
+
+id T(a1?,j1?,j2?)*T(a1?,j3?,j4?) = 1/2*(d_(j1,j4)*d_(j3,j2) - 1/Nc * d_(j1,j2)*d_(j3,j4));
+id T(a1?,j1?,j2?)*T(a2?,j2?,j1?)*f(a1?,a2?,a3?) = 0 ;
+id T(a1?,j1?,j1?) = 0 ;
+.sort
+
+if(match(f(a1?,a2?,a3?))) ;
+redefine i "0" ;
+endif ;
+.sort
+
+*#message f-algebra done, J'$cc' used
+
+#enddo
+
+#call fiertz
+
+*#message define color traces
+repeat ;
+id T(a1?,j1?,j2?)*T(a2?,j2?,j1?) = Tr(a1,a2) ;
+id T(a1?,j1?,j2?)*T(a2?,j2?,j3?)*T(a3?,j3?,j1?) = Tr(a1,a2,a3) ;
+id T(a1?,j1?,j2?)*T(a2?,j2?,j3?)*T(a3?,j3?,j4?)
+                                *T(a4?,j4?,j1?) = Tr(a1,a2,a3,a4) ;
+id T(a1?,j1?,j2?)*T(a2?,j2?,j3?)*T(a3?,j3?,j4?)
+                 *T(a4?,j4?,j5?)*T(a5?,j5?,j1?) = Tr(a1,a2,a3,a4,a5) ;
+endrepeat ;
+.sort
+*#message cyclesymmetrize
+b Tr,f,Dd ;
+.sort
+keep brackets ;
+cyclesymmetrize Tr ;
+antisymmetrize f ;
+symmetrize Dd ;
+.sort
+* the value of this particular color structure
+* repeat id Tr(a1?,a2?) = 1/2*d_(a1,a2) ;
+.sort
+
+#EndProcedure
+
+#Procedure Levi_Civita
+*AG: no contracted indices
+
+*id e_(p1?,p2?,p3?,p4?) * e_(p5?,p6?,p7?,p8?) =
+
+*+ p1.p5*p2.p6*p3.p7*p4.p8
+*- p1.p5*p2.p6*p3.p8*p4.p7
+*- p1.p5*p2.p7*p3.p6*p4.p8
+*+ p1.p5*p2.p7*p3.p8*p4.p6
+*+ p1.p5*p2.p8*p3.p6*p4.p7
+*- p1.p5*p2.p8*p3.p7*p4.p6
+*- p1.p6*p2.p5*p3.p7*p4.p8
+*+ p1.p6*p2.p5*p3.p8*p4.p7
+*+ p1.p6*p2.p7*p3.p5*p4.p8
+*- p1.p6*p2.p7*p3.p8*p4.p5
+*- p1.p6*p2.p8*p3.p5*p4.p7
+*+ p1.p6*p2.p8*p3.p7*p4.p5
+*+ p1.p7*p2.p5*p3.p6*p4.p8
+*- p1.p7*p2.p5*p3.p8*p4.p6
+*- p1.p7*p2.p6*p3.p5*p4.p8
+*+ p1.p7*p2.p6*p3.p8*p4.p5
+*+ p1.p7*p2.p8*p3.p5*p4.p6
+*- p1.p7*p2.p8*p3.p6*p4.p5
+*- p1.p8*p2.p5*p3.p6*p4.p7
+*+ p1.p8*p2.p5*p3.p7*p4.p6
+*+ p1.p8*p2.p6*p3.p5*p4.p7
+*- p1.p8*p2.p6*p3.p7*p4.p5
+*- p1.p8*p2.p7*p3.p5*p4.p6
+*+ p1.p8*p2.p7*p3.p6*p4.p5;
+
+
+*AG: one contracted index
+
+id e_(va, p6?,p7?,p8?)  = (d-3)*(p1.p8*p2.p7*p3.p6
+    -p1.p7*p2.p8*p3.p6
+    -p1.p8*p2.p6*p3.p7
+    +p1.p6*p2.p8*p3.p7
+    +p1.p7*p2.p6*p3.p8
+    -p1.p6*p2.p7*p3.p8);
+
+id e_(p1?,p2?,p3?,mu?) * e_(mu?,p6?,p7?,p8?) =  (d-3)*(p1.p8*p2.p7*p3.p6
+    -p1.p7*p2.p8*p3.p6
+    -p1.p8*p2.p6*p3.p7
+    +p1.p6*p2.p8*p3.p7
+    +p1.p7*p2.p6*p3.p8
+    -p1.p6*p2.p7*p3.p8);
+
+*AG: two contracted indices
+
+id e_(p1?,p2?,mu?,nu?) * e_(mu?,nu?,p5?,p6?) = (d-3)*(d-2)*(-p2.p5*p1.p6+p1.p5*p2.p6);
+
+*AG: three contracted indices
+
+id e_(p1?,mu?,nu?,sigma?) * e_(mu?,nu?,sigma?,p2?) = -(d-3)*(d-2)*(d-1)*(p1.p2);
+
+*AG: four contracted indices
+
+id e_(mu?,nu?,sigma?,ro?) * e_(mu?,nu?,sigma?,ro?) = (d-3)*(d-2)*(d-1)*d;
+    .sort
+
+#EndProcedure

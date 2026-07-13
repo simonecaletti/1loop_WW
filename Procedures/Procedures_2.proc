@@ -1,0 +1,643 @@
+#Procedure namemomenta
+*#message namemomenta for traces
+
+#do j=1,3
+repeat id prop?(?x,-k'j',?y) = prop(?x,mk'j',?y) ;
+#do i1=1,3
+repeat id prop?(?x,k'j'+p'i1',?y) = prop(?x,k'j'p'i1' ,?y) ;
+repeat id prop?(?x,k'j'-p'i1',?y) = prop(?x,k'j'm'i1' ,?y) ;
+repeat id prop?(?x,-k'j'-p'i1',?y) = prop(?x,mk'j'p'i1' ,?y) ;
+repeat id prop?(?x,-k'j'+p'i1',?y) = prop(?x,mk'j'm'i1' ,?y) ;
+#do i2='i1',3
+repeat id prop?(?x,k'j'+p'i1'+p'i2',?y) = prop(?x,k'j'p'i1''i2' ,?y) ;
+repeat id prop?(?x,k'j'-p'i1'-p'i2',?y) = prop(?x,k'j'm'i1''i2' ,?y) ;
+repeat id prop?(?x,-k'j'-p'i1'-p'i2',?y) = prop(?x,mk'j'p'i1''i2' ,?y) ;
+repeat id prop?(?x,-k'j'+p'i1'+p'i2',?y) = prop(?x,mk'j'm'i1''i2' ,?y) ;
+#do i3='i2',3
+repeat id prop?(?x,k'j'+p'i1'+p'i2'+p'i3',?y) = prop(?x,k'j'p'i1''i2''i3' ,?y) ;
+repeat id prop?(?x,k'j'-p'i1'-p'i2'-p'i3',?y) = prop(?x,k'j'm'i1''i2''i3' ,?y) ;
+repeat id prop?(?x,-k'j'-p'i1'-p'i2'-p'i3',?y) = prop(?x,mk'j'p'i1''i2''i3' ,?y) ;
+repeat id prop?(?x,-k'j'+p'i1'+p'i2'+p'i3',?y) = prop(?x,mk'j'm'i1''i2''i3' ,?y) ;
+#enddo
+#enddo
+#enddo
+
+#enddo
+
+
+#do j1=1,3
+#do j2={'j1'+1},3
+
+repeat id prop?(?x, k'j1'-k'j2',?y) = prop(?x, k'j1''j2' ,?y) ;
+
+repeat id prop?(?x,-k'j1'+k'j2',?y) = prop(?x,mk'j1''j2' ,?y) ;
+
+#do i1=1,3
+repeat id prop?(?x,k'j1'-k'j2'+p'i1',?y) = prop(?x, k'j1''j2'p'i1' ,?y) ;
+repeat id prop?(?x,k'j1'-k'j2'-p'i1',?y) = prop(?x, k'j1''j2'm'i1' ,?y) ;
+
+repeat id prop?(?x,-k'j1'+k'j2'-p'i1',?y) = prop(?x, mk'j1''j2'p'i1' ,?y) ;
+repeat id prop?(?x,-k'j1'+k'j2'+p'i1',?y) = prop(?x, mk'j1''j2'm'i1' ,?y) ;
+
+#do i2='i1',3
+repeat id prop?(?x,k'j1'-k'j2'+p'i1'+p'i2',?y) = prop(?x, k'j1''j2'p'i1''i2' ,?y) ;
+repeat id prop?(?x,k'j1'-k'j2'-p'i1'-p'i2',?y) = prop(?x, k'j1''j2'm'i1''i2' ,?y) ;
+
+repeat id prop?(?x,-k'j1'+k'j2'-p'i1'-p'i2',?y) = prop(?x, mk'j1''j2'p'i1''i2' ,?y) ;
+repeat id prop?(?x,-k'j1'+k'j2'+p'i1'+p'i2',?y) = prop(?x, mk'j1''j2'm'i1''i2' ,?y) ;
+
+#do i3='i2',3
+repeat id prop?(?x,k'j1'-k'j2'+p'i1'+p'i2'+p'i3',?y) = prop(?x, k'j1''j2'p'i1''i2''i3' ,?y) ;
+repeat id prop?(?x,k'j1'-k'j2'-p'i1'-p'i2'-p'i3',?y) = prop(?x, k'j1''j2'm'i1''i2''i3' ,?y) ;
+
+repeat id prop?(?x,-k'j1'+k'j2'-p'i1'-p'i2'-p'i3',?y) = prop(?x, mk'j1''j2'p'i1''i2''i3' ,?y) ;
+repeat id prop?(?x,-k'j1'+k'j2'+p'i1'+p'i2'+p'i3',?y) = prop(?x, mk'j1''j2'm'i1''i2''i3' ,?y) ;
+
+#enddo
+#enddo
+#enddo
+
+#enddo
+#enddo
+
+
+repeat id prop?(?x,k1-k2+k3,?y) = prop(?x,k123 ,?y) ;
+repeat id prop?(?x,-k1+k2-k3,?y) = prop(?x,mk123 ,?y) ;
+
+#do i1=1,3
+repeat id prop?(?x,k1-k2+k3+p'i1',?y) = prop(?x,k123p'i1' ,?y) ;
+repeat id prop?(?x,k1-k2+k3-p'i1',?y) = prop(?x,k123m'i1' ,?y) ;
+
+repeat id prop?(?x,-k1+k2-k3-p'i1',?y) = prop(?x,mk123p'i1' ,?y) ;
+repeat id prop?(?x,-k1+k2-k3+p'i1',?y) = prop(?x,mk123m'i1' ,?y) ;
+
+#do i2='i1',3
+repeat id prop?(?x,k1-k2+k3+p'i1'+p'i2',?y) = prop(?x,k123p'i1''i2' ,?y) ;
+repeat id prop?(?x,k1-k2+k3-p'i1'-p'i2',?y) = prop(?x,k123m'i1''i2' ,?y) ;
+
+repeat id prop?(?x,-k1+k2-k3-p'i1'-p'i2',?y) = prop(?x,mk123p'i1''i2' ,?y) ;
+repeat id prop?(?x,-k1+k2-k3+p'i1'+p'i2',?y) = prop(?x,mk123m'i1''i2' ,?y) ;
+
+#do i3='i2',3
+repeat id prop?(?x,k1-k2+k3+p'i1'+p'i2'+p'i3',?y) = prop(?x,k123p'i1''i2''i3' ,?y) ;
+repeat id prop?(?x,k1-k2+k3-p'i1'-p'i2'-p'i3',?y) = prop(?x,k123m'i1''i2''i3' ,?y) ;
+
+repeat id prop?(?x,-k1+k2-k3-p'i1'-p'i2'-p'i3',?y) = prop(?x,mk123p'i1''i2''i3' ,?y) ;
+repeat id prop?(?x,-k1+k2-k3+p'i1'+p'i2'+p'i3',?y) = prop(?x,mk123m'i1''i2''i3' ,?y) ;
+
+#enddo
+#enddo
+#enddo
+
+.sort
+
+
+repeat id prop?(?x,p1+p2,?y) = prop(?x,p12,?y) ;
+repeat id prop?(?x,p1+p3,?y) = prop(?x,p13,?y) ;
+repeat id prop?(?x,p2+p3,?y) = prop(?x,p23,?y) ;
+
+repeat id prop?(?x,-p1-p2,?y) = prop(?x,mp12,?y) ;
+repeat id prop?(?x,-p1-p3,?y) = prop(?x,mp13,?y) ;
+repeat id prop?(?x,-p2-p3,?y) = prop(?x,mp23,?y) ;
+
+repeat id prop?(?x,+p1+p2+p3 ,?y) = prop(?x, p123,?y) ;
+repeat id prop?(?x,-p1-p2-p3,?y)  = prop(?x,mp123,?y) ;
+.sort
+
+#EndProcedure
+#Procedure namemomentaLoopF
+*#message rename momenta inside fermion loop to perform traces
+*one loop
+#do j=1,2
+repeat id LoopF(1,?x,-k'j',?y) = LoopF(1,?x,mk'j',?y) ;
+#do i1=1,3
+repeat id LoopF(1,?x,k'j'+p'i1',?y) = LoopF(1,?x,k'j'p'i1' ,?y) ;
+repeat id LoopF(1,?x,k'j'-p'i1',?y) = LoopF(1,?x,k'j'm'i1' ,?y) ;
+repeat id LoopF(1,?x,-k'j'-p'i1',?y) = LoopF(1,?x,mk'j'p'i1' ,?y) ;
+repeat id LoopF(1,?x,-k'j'+p'i1',?y) = LoopF(1,?x,mk'j'm'i1' ,?y) ;
+#do i2='i1',3
+repeat id LoopF(1,?x,k'j'+p'i1'+p'i2',?y) = LoopF(1,?x,k'j'p'i1''i2' ,?y) ;
+repeat id LoopF(1,?x,k'j'-p'i1'-p'i2',?y) = LoopF(1,?x,k'j'm'i1''i2' ,?y) ;
+repeat id LoopF(1,?x,-k'j'-p'i1'-p'i2',?y) = LoopF(1,?x,mk'j'p'i1''i2' ,?y) ;
+repeat id LoopF(1,?x,-k'j'+p'i1'+p'i2',?y) = LoopF(1,?x,mk'j'm'i1''i2' ,?y) ;
+#do i3='i2',3
+repeat id LoopF(1,?x,k'j'+p'i1'+p'i2'+p'i3',?y) = LoopF(1,?x,k'j'p'i1''i2''i3' ,?y) ;
+repeat id LoopF(1,?x,k'j'-p'i1'-p'i2'-p'i3',?y) = LoopF(1,?x,k'j'm'i1''i2''i3' ,?y) ;
+repeat id LoopF(1,?x,-k'j'-p'i1'-p'i2'-p'i3',?y) = LoopF(1,?x,mk'j'p'i1''i2''i3' ,?y) ;
+repeat id LoopF(1,?x,-k'j'+p'i1'+p'i2'+p'i3',?y) = LoopF(1,?x,mk'j'm'i1''i2''i3' ,?y) ;
+#enddo
+#enddo
+#enddo
+#enddo
+#EndProcedure
+
+#Procedure identifyprop
+*#message identify propagators
+
+*one loop
+*massless propagators
+#do j=1,3
+
+id prop(k'j') = 1/Dk'j' ;
+#do i1=1,3
+id prop(k'j'+p'i1') = 1/Dk'j'p'i1' ;
+id prop(k'j'-p'i1') = 1/Dk'j'm'i1' ;
+id prop(-k'j'-p'i1') = 1/Dk'j'p'i1' ;
+id prop(-k'j'+p'i1') = 1/Dk'j'm'i1' ;
+#do i2='i1',3
+id prop(k'j'+p'i1'+p'i2') = 1/Dk'j'p'i1''i2' ;
+id prop(k'j'-p'i1'-p'i2') = 1/Dk'j'm'i1''i2' ;
+id prop(-k'j'-p'i1'-p'i2') = 1/Dk'j'p'i1''i2' ;
+id prop(-k'j'+p'i1'+p'i2') = 1/Dk'j'm'i1''i2' ;
+#do i3='i2',3
+id prop(k'j'+p'i1'+p'i2'+p'i3') = 1/Dk'j'p'i1''i2''i3' ;
+id prop(k'j'-p'i1'-p'i2'-p'i3') = 1/Dk'j'm'i1''i2''i3' ;
+id prop(-k'j'-p'i1'-p'i2'-p'i3') = 1/Dk'j'p'i1''i2''i3' ;
+id prop(-k'j'+p'i1'+p'i2'+p'i3') = 1/Dk'j'm'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#enddo
+
+*massive propagators
+#do j=1,3
+
+id propmt(k'j') = 1/Dmk'j' ;
+#do i1=1,3
+id propmt(k'j'+p'i1') = 1/Dmk'j'p'i1' ;
+id propmt(k'j'-p'i1') = 1/Dmk'j'm'i1' ;
+id propmt(-k'j'-p'i1') = 1/Dmk'j'p'i1' ;
+id propmt(-k'j'+p'i1') = 1/Dmk'j'm'i1' ;
+#do i2='i1',3
+id propmt(k'j'+p'i1'+p'i2') = 1/Dmk'j'p'i1''i2' ;
+id propmt(k'j'-p'i1'-p'i2') = 1/Dmk'j'm'i1''i2' ;
+id propmt(-k'j'-p'i1'-p'i2') = 1/Dmk'j'p'i1''i2' ;
+id propmt(-k'j'+p'i1'+p'i2') = 1/Dmk'j'm'i1''i2' ;
+#do i3='i2',3
+id propmt(k'j'+p'i1'+p'i2'+p'i3') = 1/Dmk'j'p'i1''i2''i3' ;
+id propmt(k'j'-p'i1'-p'i2'-p'i3') = 1/Dmk'j'm'i1''i2''i3' ;
+id propmt(-k'j'-p'i1'-p'i2'-p'i3') = 1/Dmk'j'p'i1''i2''i3' ;
+id propmt(-k'j'+p'i1'+p'i2'+p'i3') = 1/Dmk'j'm'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#enddo
+
+*two and three loops
+
+*massless propagators
+id prop(k1-k2) = 1/Dk12 ;
+id prop(k1-k3) = 1/Dk13 ;
+id prop(k2-k3) = 1/Dk23 ;
+id prop(k1-k2+k3) = 1/Dk123 ;
+
+id prop(-k1+k2) = 1/Dk12 ;
+id prop(-k1+k3) = 1/Dk13 ;
+id prop(-k2+k3) = 1/Dk23 ;
+id prop(-k1+k2-k3) = 1/Dk123 ;
+
+#do i1=1,3
+id prop(k1-k2+p'i1') = 1/Dk12p'i1' ;
+id prop(k1-k2-p'i1') = 1/Dk12m'i1' ;
+#do i2='i1',3
+id prop(k1-k2+p'i1'+p'i2') = 1/Dk12p'i1''i2' ;
+id prop(k1-k2-p'i1'-p'i2') = 1/Dk12m'i1''i2' ;
+#do i3='i2',3
+id prop(k1-k2+p'i1'+p'i2'+p'i3') = 1/Dk12p'i1''i2''i3' ;
+id prop(k1-k2-p'i1'-p'i2'-p'i3') = 1/Dk12m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id prop(k1-k3+p'i1') = 1/Dk13p'i1' ;
+id prop(k1-k3-p'i1') = 1/Dk13m'i1' ;
+#do i2='i1',3
+id prop(k1-k3+p'i1'+p'i2') = 1/Dk13p'i1''i2' ;
+id prop(k1-k3-p'i1'-p'i2') = 1/Dk13m'i1''i2' ;
+#do i3='i2',3
+id prop(k1-k3+p'i1'+p'i2'+p'i3') = 1/Dk13p'i1''i2''i3' ;
+id prop(k1-k3-p'i1'-p'i2'-p'i3') = 1/Dk13m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id prop(k2-k3+p'i1') = 1/Dk23p'i1' ;
+id prop(k2-k3-p'i1') = 1/Dk23m'i1' ;
+#do i2='i1',3
+id prop(k2-k3+p'i1'+p'i2') = 1/Dk23p'i1''i2' ;
+id prop(k2-k3-p'i1'-p'i2') = 1/Dk23m'i1''i2' ;
+#do i3='i2',3
+id prop(k2-k3+p'i1'+p'i2'+p'i3') = 1/Dk23p'i1''i2''i3' ;
+id prop(k2-k3-p'i1'-p'i2'-p'i3') = 1/Dk23m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id prop(k1-k2+k3+p'i1') = 1/Dk123p'i1' ;
+id prop(k1-k2+k3-p'i1') = 1/Dk123m'i1' ;
+#do i2='i1',3
+id prop(k1-k2+k3+p'i1'+p'i2') = 1/Dk123p'i1''i2' ;
+id prop(k1-k2+k3-p'i1'-p'i2') = 1/Dk123m'i1''i2' ;
+#do i3='i2',3
+id prop(k1-k2+k3+p'i1'+p'i2'+p'i3') = 1/Dk123p'i1''i2''i3' ;
+id prop(k1-k2+k3-p'i1'-p'i2'-p'i3') = 1/Dk123m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+
+#do i1=1,3
+id prop(-k1+k2-p'i1') = 1/Dk12p'i1' ;
+id prop(-k1+k2+p'i1') = 1/Dk12m'i1' ;
+#do i2='i1',3
+id prop(-k1+k2-p'i1'-p'i2') = 1/Dk12p'i1''i2' ;
+id prop(-k1+k2+p'i1'+p'i2') = 1/Dk12m'i1''i2' ;
+#do i3='i2',3
+id prop(-k1+k2-p'i1'-p'i2'-p'i3') = 1/Dk12p'i1''i2''i3' ;
+id prop(-k1+k2+p'i1'+p'i2'+p'i3') = 1/Dk12m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id prop(-k1+k3-p'i1') = 1/Dk13p'i1' ;
+id prop(-k1+k3+p'i1') = 1/Dk13m'i1' ;
+#do i2='i1',3
+id prop(-k1+k3-p'i1'-p'i2') = 1/Dk13p'i1''i2' ;
+id prop(-k1+k3+p'i1'+p'i2') = 1/Dk13m'i1''i2' ;
+#do i3='i2',3
+id prop(-k1+k3-p'i1'-p'i2'-p'i3') = 1/Dk13p'i1''i2''i3' ;
+id prop(-k1+k3+p'i1'+p'i2'+p'i3') = 1/Dk13m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id prop(-k2+k3-p'i1') = 1/Dk23p'i1' ;
+id prop(-k2+k3+p'i1') = 1/Dk23m'i1' ;
+#do i2='i1',3
+id prop(-k2+k3-p'i1'-p'i2') = 1/Dk23p'i1''i2' ;
+id prop(-k2+k3+p'i1'+p'i2') = 1/Dk23m'i1''i2' ;
+#do i3='i2',3
+id prop(-k2+k3-p'i1'-p'i2'-p'i3') = 1/Dk23p'i1''i2''i3' ;
+id prop(-k2+k3+p'i1'+p'i2'+p'i3') = 1/Dk23m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id prop(-k1+k2-k3-p'i1') = 1/Dk123p'i1' ;
+id prop(-k1+k2-k3+p'i1') = 1/Dk123m'i1' ;
+#do i2='i1',3
+id prop(-k1+k2-k3-p'i1'-p'i2') = 1/Dk123p'i1''i2' ;
+id prop(-k1+k2-k3+p'i1'+p'i2') = 1/Dk123m'i1''i2' ;
+#do i3='i2',3
+id prop(-k1+k2-k3-p'i1'-p'i2'-p'i3') = 1/Dk123p'i1''i2''i3' ;
+id prop(-k1+k2-k3+p'i1'+p'i2'+p'i3') = 1/Dk123m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+*massive propagators
+id propmt(k1-k2) = 1/Dmk12 ;
+id propmt(k1-k3) = 1/Dmk13 ;
+id propmt(k2-k3) = 1/Dmk23 ;
+id propmt(k1-k2+k3) = 1/Dmk123 ;
+
+id propmt(-k1+k2) = 1/Dmk12 ;
+id propmt(-k1+k3) = 1/Dmk13 ;
+id propmt(-k2+k3) = 1/Dmk23 ;
+id propmt(-k1+k2-k3) = 1/Dmk123 ;
+
+#do i1=1,3
+id propmt(k1-k2+p'i1') = 1/Dmk12p'i1' ;
+id propmt(k1-k2-p'i1') = 1/Dmk12m'i1' ;
+#do i2='i1',3
+id propmt(k1-k2+p'i1'+p'i2') = 1/Dmk12p'i1''i2' ;
+id propmt(k1-k2-p'i1'-p'i2') = 1/Dmk12m'i1''i2' ;
+#do i3='i2',3
+id propmt(k1-k2+p'i1'+p'i2'+p'i3') = 1/Dmk12p'i1''i2''i3' ;
+id propmt(k1-k2-p'i1'-p'i2'-p'i3') = 1/Dmk12m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id propmt(k1-k3+p'i1') = 1/Dmk13p'i1' ;
+id propmt(k1-k3-p'i1') = 1/Dmk13m'i1' ;
+#do i2='i1',3
+id propmt(k1-k3+p'i1'+p'i2') = 1/Dmk13p'i1''i2' ;
+id propmt(k1-k3-p'i1'-p'i2') = 1/Dmk13m'i1''i2' ;
+#do i3='i2',3
+id propmt(k1-k3+p'i1'+p'i2'+p'i3') = 1/Dmk13p'i1''i2''i3' ;
+id propmt(k1-k3-p'i1'-p'i2'-p'i3') = 1/Dmk13m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id propmt(k2-k3+p'i1') = 1/Dmk23p'i1' ;
+id propmt(k2-k3-p'i1') = 1/Dmk23m'i1' ;
+#do i2='i1',3
+id propmt(k2-k3+p'i1'+p'i2') = 1/Dmk23p'i1''i2' ;
+id propmt(k2-k3-p'i1'-p'i2') = 1/Dmk23m'i1''i2' ;
+#do i3='i2',3
+id propmt(k2-k3+p'i1'+p'i2'+p'i3') = 1/Dmk23p'i1''i2''i3' ;
+id propmt(k2-k3-p'i1'-p'i2'-p'i3') = 1/Dmk23m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id propmt(k1-k2+k3+p'i1') = 1/Dmk123p'i1' ;
+id propmt(k1-k2+k3-p'i1') = 1/Dmk123m'i1' ;
+#do i2='i1',3
+id propmt(k1-k2+k3+p'i1'+p'i2') = 1/Dmk123p'i1''i2' ;
+id propmt(k1-k2+k3-p'i1'-p'i2') = 1/Dmk123m'i1''i2' ;
+#do i3='i2',3
+id propmt(k1-k2+k3+p'i1'+p'i2'+p'i3') = 1/Dmk123p'i1''i2''i3' ;
+id propmt(k1-k2+k3-p'i1'-p'i2'-p'i3') = 1/Dmk123m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+
+#do i1=1,3
+id propmt(-k1+k2-p'i1') = 1/Dmk12p'i1' ;
+id propmt(-k1+k2+p'i1') = 1/Dmk12m'i1' ;
+#do i2='i1',3
+id propmt(-k1+k2-p'i1'-p'i2') = 1/Dmk12p'i1''i2' ;
+id propmt(-k1+k2+p'i1'+p'i2') = 1/Dmk12m'i1''i2' ;
+#do i3='i2',3
+id propmt(-k1+k2-p'i1'-p'i2'-p'i3') = 1/Dmk12p'i1''i2''i3' ;
+id propmt(-k1+k2+p'i1'+p'i2'+p'i3') = 1/Dmk12m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id propmt(-k1+k3-p'i1') = 1/Dmk13p'i1' ;
+id propmt(-k1+k3+p'i1') = 1/Dmk13m'i1' ;
+#do i2='i1',3
+id propmt(-k1+k3-p'i1'-p'i2') = 1/Dmk13p'i1''i2' ;
+id propmt(-k1+k3+p'i1'+p'i2') = 1/Dmk13m'i1''i2' ;
+#do i3='i2',3
+id propmt(-k1+k3-p'i1'-p'i2'-p'i3') = 1/Dmk13p'i1''i2''i3' ;
+id propmt(-k1+k3+p'i1'+p'i2'+p'i3') = 1/Dmk13m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id propmt(-k2+k3-p'i1') = 1/Dmk23p'i1' ;
+id propmt(-k2+k3+p'i1') = 1/Dmk23m'i1' ;
+#do i2='i1',3
+id propmt(-k2+k3-p'i1'-p'i2') = 1/Dmk23p'i1''i2' ;
+id propmt(-k2+k3+p'i1'+p'i2') = 1/Dmk23m'i1''i2' ;
+#do i3='i2',3
+id propmt(-k2+k3-p'i1'-p'i2'-p'i3') = 1/Dmk23p'i1''i2''i3' ;
+id propmt(-k2+k3+p'i1'+p'i2'+p'i3') = 1/Dmk23m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+id propmt(-k1+k2-k3-p'i1') = 1/Dmk123p'i1' ;
+id propmt(-k1+k2-k3+p'i1') = 1/Dmk123m'i1' ;
+#do i2='i1',3
+id propmt(-k1+k2-k3-p'i1'-p'i2') = 1/Dmk123p'i1''i2' ;
+id propmt(-k1+k2-k3+p'i1'+p'i2') = 1/Dmk123m'i1''i2' ;
+#do i3='i2',3
+id propmt(-k1+k2-k3-p'i1'-p'i2'-p'i3') = 1/Dmk123p'i1''i2''i3' ;
+id propmt(-k1+k2-k3+p'i1'+p'i2'+p'i3') = 1/Dmk123m'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+
+.sort
+
+#EndProcedure
+
+
+
+#Procedure mktok
+
+repeat id mp12 = -p1-p2 ;
+repeat id mp13 = -p1-p3 ;
+repeat id mp23 = -p2-p3 ;
+repeat id mk123 = -k123 ;
+repeat id mp123 = -p1-p2-p3  ;
+
+
+#do j= 1,3
+repeat id mk'j' = - k'j' ;
+#do i1= 1,3
+repeat id mk'j'p'i1' = - k'j'p'i1' ;
+repeat id mk'j'm'i1' = - k'j'm'i1' ;
+#do i2= 'i1',3
+repeat id mk'j'p'i1''i2' = - k'j'p'i1''i2' ;
+repeat id mk'j'm'i1''i2' = - k'j'm'i1''i2' ;
+#do i3='i2',3
+repeat id mk'j'p'i1''i2''i3' = - k'j'p'i1''i2''i3' ;
+repeat id mk'j'm'i1''i2''i3' = - k'j'm'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+
+#enddo
+
+
+#do j1=1,3
+#do j2={'j1'+1},3
+repeat id mk'j1''j2' = -k'j1''j2' ;
+#do i1=1,3
+repeat id mk'j1''j2'p'i1'  = -k'j1''j2'p'i1' ;
+repeat id mk'j1''j2'm'i1'  = -k'j1''j2'm'i1' ;
+#do i2='i1',3
+repeat id mk'j1''j2'p'i1''i2' = -k'j1''j2'p'i1''i2' ;
+repeat id mk'j1''j2'm'i1''i2' = -k'j1''j2'm'i1''i2' ;
+#do i3='i2',3
+repeat id mk'j1''j2'p'i1''i2''i3' = -k'j1''j2'p'i1''i2''i3' ;
+repeat id mk'j1''j2'm'i1''i2''i3' = -k'j1''j2'm'i1''i2''i3' ;
+#enddo
+#enddo
+#enddo
+#enddo
+#enddo
+
+#do i1=1,3
+repeat id mk123p'i1' = -k123p'i1' ;
+repeat id mk123m'i1' = -k123m'i1' ;
+#do i2='i1',3
+repeat id mk123p'i1''i2'  = -k123p'i1''i2' ;
+repeat id mk123m'i1''i2'  = -k123m'i1''i2' ;
+#do i3='i2',3
+repeat id mk123p'i1''i2''i3' = -k123p'i1''i2''i3' ;
+repeat id mk123m'i1''i2''i3' = -k123m'i1''i2''i3' ;
+
+#enddo
+#enddo
+#enddo
+
+
+#Endprocedure
+************************************************************
+
+#Procedure openmomenta
+*#message openmomenta
+
+
+#do j= 1,3
+
+#do i1= 1,3
+repeat id k'j'p'i1' = k'j'+p'i1' ;
+repeat id k'j'm'i1' = k'j'-p'i1' ;
+#do i2= 'i1',3
+repeat id k'j'p'i1''i2' = k'j'+p'i1'+p'i2' ;
+repeat id k'j'm'i1''i2' = k'j'-p'i1'-p'i2' ;
+#do i3='i2',3
+repeat id k'j'p'i1''i2''i3' = k'j'+p'i1'+p'i2'+p'i3' ;
+repeat id k'j'm'i1''i2''i3' = k'j'-p'i1'-p'i2'-p'i3' ;
+#enddo
+#enddo
+#enddo
+
+#enddo
+
+#do j1=1,3
+#do j2='j1',3
+
+repeat id k'j1''j2' =  k'j1'-k'j2' ;
+
+repeat id mk'j1''j2' = -k'j1'+k'j2' ;
+
+#do i1=1,3
+repeat id k'j1''j2'p'i1'  = k'j1'-k'j2'+p'i1' ;
+repeat id k'j1''j2'm'i1'  = k'j1'-k'j2'-p'i1' ;
+
+repeat id mk'j1''j2'p'i1'  = -k'j1'+k'j2'-p'i1' ;
+repeat id mk'j1''j2'm'i1'  = -k'j1'+k'j2'+p'i1' ;
+
+#do i2='i1',3
+repeat id k'j1''j2'p'i1''i2' = k'j1'-k'j2'+p'i1'+p'i2' ;
+repeat id k'j1''j2'm'i1''i2' = k'j1'-k'j2'-p'i1'-p'i2' ;
+
+repeat id mk'j1''j2'p'i1''i2' = -k'j1'+k'j2'-p'i1'-p'i2' ;
+repeat id mk'j1''j2'm'i1''i2' = -k'j1'+k'j2'+p'i1'+p'i2' ;
+
+#do i3='i2',3
+repeat id k'j1''j2'p'i1''i2''i3' = k'j1'-k'j2'+p'i1'+p'i2'+p'i3' ;
+repeat id k'j1''j2'm'i1''i2''i3' = k'j1'-k'j2'-p'i1'-p'i2'-p'i3' ;
+
+repeat id mk'j1''j2'p'i1''i2''i3' = -k'j1'+k'j2'-p'i1'-p'i2'-p'i3' ;
+repeat id mk'j1''j2'm'i1''i2''i3' = -k'j1'+k'j2'+p'i1'+p'i2'+p'i3' ;
+
+#enddo
+#enddo
+#enddo
+
+#enddo
+#enddo
+
+
+repeat id k123  = k1-k2+k3 ;
+
+
+#do i1=1,3
+repeat id k123p'i1' = k1-k2+k3+p'i1' ;
+repeat id k123m'i1' = k1-k2+k3-p'i1' ;
+
+repeat id mk123p'i1' = -k1+k2-k3-p'i1' ;
+repeat id mk123m'i1' = -k1+k2-k3+p'i1' ;
+
+#do i2='i1',3
+repeat id k123p'i1''i2' = k1-k2+k3+p'i1'+p'i2' ;
+repeat id k123m'i1''i2' = k1-k2+k3-p'i1'-p'i2' ;
+
+repeat id mk123p'i1''i2'  = -k1+k2-k3-p'i1'-p'i2' ;
+repeat id mk123m'i1''i2'  = -k1+k2-k3+p'i1'+p'i2' ;
+
+#do i3='i2',3
+repeat id k123p'i1''i2''i3' = k1-k2+k3+p'i1'+p'i2'+p'i3' ;
+repeat id k123m'i1''i2''i3' = k1-k2+k3-p'i1'-p'i2'-p'i3' ;
+
+repeat id mk123p'i1''i2''i3' = -k1+k2-k3-p'i1'-p'i2'-p'i3' ;
+repeat id mk123m'i1''i2''i3' = -k1+k2-k3+p'i1'+p'i2'+p'i3' ;
+
+#enddo
+#enddo
+#enddo
+
+.sort
+
+
+repeat id p12 = p1+p2 ;
+repeat id p13 = p1+p3 ;
+repeat id p23 = p2+p3 ;
+
+repeat id  p123 = +p1+p2+p3  ;
+
+.sort
+
+#endProcedure
+
+
+
+
+#procedure PFD
+#message doing partial fractioning in d
+id d = [d-4] + 4 ;
+.sort
+#do i=1,1
+*AG add [d-1]
+id once 1/[d-1]*1/[d-2] = ( 1/[d-2] - 1/[d-1] )    ;
+id once 1/[d-1]*1/[d-3] = 1/2*( 1/[d-3] - 1/[d-1] );
+id once 1/[d-1]*1/[d-4] = 1/3*( 1/[d-4] - 1/[d-1] );
+.sort
+id once 1/[d-2]*1/[d-3] = ( 1/[d-3] - 1/[d-2] )   ;
+id once 1/[d-2]*1/[d-4] = ( 1/[d-4] - 1/[d-2] )/2 ;
+id once 1/[d-3]*1/[d-4] = ( 1/[d-4] - 1/[d-3] )   ;
+.sort
+id once [d-4]/[d-4] = 1 ;
+id once [d-4]/[d-3] = 1 - 1/[d-3] ;
+id once [d-4]/[d-2] = 1 - 2/[d-2] ;
+id once [d-4]/[d-1] = 1 - 3/[d-1] ;
+.sort
+
+*AG add [d-1]
+if( match( d ) ) ;
+redefine i "0" ;
+elseif( match( [d-4]/[d-1] ) ) ;
+redefine i "0" ;
+elseif( match( [d-4]/[d-2] ) ) ;
+redefine i "0" ;
+elseif( match( [d-4]/[d-3] ) ) ;
+redefine i "0" ;
+elseif( match( [d-4]/[d-4] ) ) ;
+redefine i "0" ;
+
+elseif( match( 1/[d-1]*1/[d-2] ) ) ;
+redefine i "0" ;
+elseif( match( 1/[d-1]*1/[d-3] ) ) ;
+redefine i "0" ;
+elseif( match( 1/[d-1]*1/[d-4] ) ) ;
+redefine i "0" ;
+elseif( match( 1/[d-2]*1/[d-3] ) ) ;
+redefine i "0" ;
+elseif( match( 1/[d-2]*1/[d-4] ) ) ;
+redefine i "0" ;
+elseif( match( 1/[d-3]*1/[d-4] ) ) ;
+redefine i "0" ;
+endif ;
+.sort
+
+#message i is 'i'
+
+#enddo
+#endprocedure

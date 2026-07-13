@@ -1,0 +1,14 @@
+SetDim[4-2eps];
+Internal = {k1};
+External = {p1, p2, p3, ttAuxLeg};
+MomentumConservation = {mm[ttAuxLeg] -> -mm[p1] - mm[p2] - mm[p3]};
+Replacements = {mmp2[p1] -> 0, mmp[p1, p2] -> s/2, mmp[p1, p3] -> (-msq + t)/2, mmp2[p2] -> 0, mmp[p2, p3] -> (msq - s - t)/2, mmp2[p3] -> msq};
+Invariants = {msq -> mmp2[p3], s -> 2*mmp[p1, p2], t -> 2*mmp[p1, p3] + mmp2[p3]};
+LoopMomenta = {mm[k1], mm[k1] + mm[p1], mm[k1] + mm[p1] + mm[p2], mm[k1] + mm[p1] + mm[p2] + mm[p3]};
+Mass = {0, 0, 0, 0};
+Declare[#,Number]&/@{msq, s, t};
+Propagators = ((mp2[#])&/@LoopMomenta+Mass)/. MomentumConservation/.Replacements//Expand;
+LIBPFamilyLite[tt, Propagators, Internal, External, MomentumConservation, Replacements, Invariants];
+NewBasis[tt,LIBPToLiteRed[Propagators],LIBPLoopMomenta[tt],GenerateIBP->True];
+AnalyzeSectors[tt,{_, _, _, _},CutDs->{0, 0, 0, 0}];
+LIBPFindSymmetries[tt,EMs->False];

@@ -1,0 +1,2 @@
+{mis, Join[nonmis, mis] -> Join[Partition[FFReconstructFunction[graph, {eps}, 
+     "MaxPrimes" -> 200, "MaxDegree" -> 1000], 0], IdentityMatrix[0]]}
